@@ -1,0 +1,24 @@
+{
+  "name": "react-seed",
+  "version": "0.0.1",
+  "description": "a scaffold for building React apps with ES7 and webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab05.dtdream.com:marco/react-seed.git"
+  },
+  "keywords": [
+    "react",
+    "seed",
+    "pubtrans"
+  ],
+  "author": "Marco",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
