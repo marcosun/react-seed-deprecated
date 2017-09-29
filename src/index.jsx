@@ -1,7 +1,8 @@
 import React from 'React';
 import { render } from 'react-dom';
+import Styles from './style.css';
 
 render(
-  <div>Comfortable With React Seed</div>,
+  <div className={Styles.mainPage}>Comfortable With React Seed</div>,
   document.getElementById('app')
 );
