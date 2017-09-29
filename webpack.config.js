@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.jsx',
@@ -36,5 +37,13 @@ module.exports = {
         ],
       },
     ],
+  },
+//  plugins: [
+//    new webpack.HotModuleReplacementPlugin(),
+//  ],
+  
+  devServer: {
+    contentBase: './dist',
+//    hot: true,
   },
 };
