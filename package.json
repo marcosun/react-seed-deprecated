@@ -4,6 +4,7 @@
   "description": "a scaffold for building React apps with ES7 and webpack",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "build": "webpack"
   },
   "repository": {
