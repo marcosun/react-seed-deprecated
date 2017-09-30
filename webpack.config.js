@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // Dynamically generate index.html with multiple entries
+const CleanWebpackPlugin = require('clean-webpack-plugin'); //Clean dist folder
 
 module.exports = {
   entry: {
@@ -15,13 +16,13 @@ module.exports = {
   module: {
     rules: [
 
-      { // javascript
+      { // Javascript
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
 
-      { //styling
+      { //Styling
         test: /\.css$/,
         use: [
           {
@@ -44,7 +45,7 @@ module.exports = {
         ],
       },
 
-      { //images
+      { //Images
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
@@ -57,7 +58,7 @@ module.exports = {
         ],
       },
 
-      { //fonts
+      { //Fonts
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           {
@@ -71,7 +72,10 @@ module.exports = {
       },
     ],
   },
+
   plugins: [
+    new CleanWebpackPlugin(['dist']),
+
     new HtmlWebpackPlugin({
       // Required
       inject: false,
