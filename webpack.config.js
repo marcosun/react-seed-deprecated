@@ -12,13 +12,13 @@ module.exports = {
   module: {
     rules: [
 
-      {
+      { // javascript
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
 
-      {
+      { //styling
         test: /\.css$/,
         use: [
           {
@@ -41,7 +41,7 @@ module.exports = {
         ],
       },
 
-      {
+      { //images
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
@@ -50,6 +50,17 @@ module.exports = {
               limit: 8192,
               name: 'images/[name][hash].[ext]',
             },
+          },
+        ],
+      },
+
+      { //fonts
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: 'fonts/[name][hash].[ext]',
           },
         ],
       },
