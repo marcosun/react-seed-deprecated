@@ -1,11 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: {
+    app: './src/index.jsx',
+  },
 
   output: {
-    filename: 'bundle.js',
+    filename: 'assets/js/[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
 
@@ -68,9 +71,18 @@ module.exports = {
       },
     ],
   },
-//  plugins: [
-//    new webpack.HotModuleReplacementPlugin(),
-//  ],
+  plugins: [
+    new HtmlWebpackPlugin({
+      // Required
+      inject: false,
+      template: require('html-webpack-template'),
+
+      // Optional
+      title: 'React Seed',
+      appMountId: 'app',
+    }),
+    // new webpack.HotModuleReplacementPlugin(),
+  ],
   
   devServer: {
     contentBase: './dist',
