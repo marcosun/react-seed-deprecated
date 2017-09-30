@@ -29,7 +29,10 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.7",
+    "file-loader": "# 1.x.x version of file-loader is not compatible with a bunch of loaders, i.e. css-loader, html-loader, ..., https://github.com/webpack-contrib/file-loader/issues/181#issuecomment-318230691, https://github.com/webpack-contrib/html-loader/issues/140#issuecomment-320546696",
+    "file-loader": "^0.11.2",
     "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
   }

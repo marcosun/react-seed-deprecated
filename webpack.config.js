@@ -3,17 +3,21 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.jsx',
+
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+
   module: {
     rules: [
+
       {
-        test: /\.js|\.jsx$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+
       {
         test: /\.css$/,
         use: [
@@ -32,6 +36,19 @@ module.exports = {
               sourceMap: true,
               camelCase: true,
               localIdentName: '[path][name]__[local]--[hash:base64:5]',
+            },
+          },
+        ],
+      },
+
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'images/[name][hash].[ext]',
             },
           },
         ],
