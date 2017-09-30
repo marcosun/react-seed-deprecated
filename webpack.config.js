@@ -8,6 +8,8 @@ module.exports = {
     app: './src/index.jsx',
   },
 
+  devtool: 'inline-source-map',
+
   output: {
     filename: 'assets/js/[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
