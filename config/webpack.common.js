@@ -1,27 +1,19 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Dynamically generate index.html with multiple entries
-const CleanWebpackPlugin = require('clean-webpack-plugin'); //Clean dist folder
+const CleanWebpackPlugin = require('clean-webpack-plugin'); // Clean dist folder
 
 module.exports = {
   entry: {
-    vendor: [
-      // 'babel-polyfill',
-      'react-hot-loader/patch',
-      'react',
-      'react-dom',
-    ],
     app: [
-      './src/index.jsx',
+      './src/index.jsx', // App entry
     ],
   },
-
-  devtool: 'inline-source-map',
 
   output: {
-    filename: 'assets/js/[name].[hash].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
   },
+
+  devtool: 'source-map',
 
   module: {
     rules: [
@@ -37,19 +29,13 @@ module.exports = {
         use: [
           {
             loader: 'style-loader',
-            options: {
-              sourceMap: true,
-              convertToAbsoluteUrls: true,
-              hmr: true,
-            },
           },
           {
             loader: 'css-loader',
             options: {
               modules: true,
-              sourceMap: true,
               camelCase: true,
-              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              localIdentName: '[path][name]__[local]--[hash:base64:6]',
             },
           },
         ],
@@ -84,35 +70,22 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin( // Clean dist folder
+      ['dist'],
+      {
+        root: path.resolve(__dirname , '../'),
+        verbose: true,
+      }
+    ),
 
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({ // Dynamically generate index.html with multiple entries
       // Required
       inject: false,
       template: require('html-webpack-template'),
 
       // Optional
-      title: 'React Seed',
-      appMountId: 'app',
+      title: 'React Seed', // HTML title
+      appMountId: 'app', // React will initialise on HTML tag with this id
     }),
-
-    new webpack.optimize.CommonsChunkPlugin({ // Extract vendor into a seperate file
-      name: 'vendor',
-    }),
-
-    new webpack.optimize.CommonsChunkPlugin({ // Extract runtime into a seperate file
-      name: 'runtime',
-    }),
-
-    new webpack.HotModuleReplacementPlugin(), // Enable HMR globally
-
-    new webpack.NamedModulesPlugin(), // Prints more readable module names in the browser console on HMR updates
-
-    new webpack.NoEmitOnErrorsPlugin(), // Do not emit compiled assets that include errors
   ],
-  
-  devServer: {
-    contentBase: './dist',
-    hot: true, // Enable HMR on the server
-  },
 };
