@@ -1,8 +1,18 @@
 {
   "presets": [
-    "env",
+    [
+      "env", {
+        "modules": false, // Convert to ES2015 modules
+      },
+    ],
+    "stage-0",
     "react",
-    "stage-0"
   ],
-  "plugins": []
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel", // Enable react hot loader
+      ],
+    },
+  },
 }

@@ -5,13 +5,21 @@ const CleanWebpackPlugin = require('clean-webpack-plugin'); //Clean dist folder
 
 module.exports = {
   entry: {
-    app: './src/index.jsx',
+    vendor: [
+      // 'babel-polyfill',
+      'react-hot-loader/patch',
+      'react',
+      'react-dom',
+    ],
+    app: [
+      './src/index.jsx',
+    ],
   },
 
   devtool: 'inline-source-map',
 
   output: {
-    filename: 'assets/js/[name].bundle.js',
+    filename: 'assets/js/[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
   },
 
@@ -87,11 +95,24 @@ module.exports = {
       title: 'React Seed',
       appMountId: 'app',
     }),
-    // new webpack.HotModuleReplacementPlugin(),
+
+    new webpack.optimize.CommonsChunkPlugin({ // Extract vendor into a seperate file
+      name: 'vendor',
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({ // Extract runtime into a seperate file
+      name: 'runtime',
+    }),
+
+    new webpack.HotModuleReplacementPlugin(), // Enable HMR globally
+
+    new webpack.NamedModulesPlugin(), // Prints more readable module names in the browser console on HMR updates
+
+    new webpack.NoEmitOnErrorsPlugin(), // Do not emit compiled assets that include errors
   ],
   
   devServer: {
     contentBase: './dist',
-//    hot: true,
+    hot: true, // Enable HMR on the server
   },
 };
