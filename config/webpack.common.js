@@ -20,12 +20,13 @@ module.exports = {
 
       { // Javascript
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        include: path.resolve(__dirname, "../src"),
         loader: 'babel-loader',
       },
 
       { //Styling
         test: /\.css$/,
+        include: path.resolve(__dirname, "../src"),
         use: [
           {
             loader: 'style-loader',
@@ -43,6 +44,7 @@ module.exports = {
 
       { //Images
         test: /\.(png|svg|jpg|gif)$/,
+        include: path.resolve(__dirname, "../src"),
         use: [
           {
             loader: 'url-loader',
@@ -56,6 +58,7 @@ module.exports = {
 
       { //Fonts
         test: /\.(woff|woff2|eot|ttf|otf)$/,
+        include: path.resolve(__dirname, "../src"),
         use: [
           {
             loader: 'url-loader',
