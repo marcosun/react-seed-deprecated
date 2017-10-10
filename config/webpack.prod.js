@@ -20,11 +20,12 @@ module.exports = merge.smart(common, {
     new webpack.HashedModuleIdsPlugin(),
 
     new webpack.optimize.CommonsChunkPlugin({ // Bundle vendor into a seperate file
-      name: ['vendor'],
+      name: ['common', 'vendor'], // Extract common dependencies between multiple entries to common.js
     }),
 
     new webpack.optimize.CommonsChunkPlugin({ // Bundle runtime into a seperate file
       name: 'runtime',
+      minChunks: Infinity,
     }),
 
     new UglifyJSPlugin({ // Uglify && Tree Shaking for production environment
