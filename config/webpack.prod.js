@@ -27,7 +27,9 @@ module.exports = merge.smart(common, {
       name: 'runtime',
     }),
 
-    new UglifyJSPlugin(), // Uglify && Tree Shaking for production
+    new UglifyJSPlugin({ // Uglify && Tree Shaking for production environment
+      sourceMap: true, //Very Important! Restrict source map file to administrator ONLY!
+    }),
 
     new webpack.DefinePlugin( // Enable minification
       {
