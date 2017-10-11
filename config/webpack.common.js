@@ -2,6 +2,7 @@ const path = require('path');
 const paths = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Dynamically generate index.html with multiple entries
 const CleanWebpackPlugin = require('clean-webpack-plugin'); // Clean dist folder
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin'); // Prevents users from importing files from outside of src/
 
 module.exports = {
   entry: {
@@ -71,6 +72,8 @@ module.exports = {
   },
 
   plugins: [
+    new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]), // Prevents users from importing files from outside of src/
+
     new CleanWebpackPlugin( // Clean dist folder
       ['dist'],
       {
