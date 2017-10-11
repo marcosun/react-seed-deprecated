@@ -8,6 +8,6 @@ module.exports = {
   appPath: resolveApp('.'),
   appDist: resolveApp('dist'),
   appSrc: resolveApp('src'),
-  appIndexJs: resolveApp('src/index.jsx'),
+  appIndexJs: resolveApp('src/index.js'),
   appPackageJson: resolveApp('package.json'),
 };

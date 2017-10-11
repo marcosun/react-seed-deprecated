@@ -1,5 +1,6 @@
 import React from 'React';
-import SubPage from './SubPage.jsx';
+import SubPage from './SubPage';
+import SubPage2 from './SubPage2';
 import Styles from './style.css';
 
 export default function() {
@@ -7,6 +8,7 @@ export default function() {
     <div>
       <div className={Styles.mainPage}>Comfortable With React Seed</div>
       <SubPage />
+      <SubPage2 />
     </div>
   );
 };
