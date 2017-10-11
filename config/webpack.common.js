@@ -1,16 +1,17 @@
 const path = require('path');
+const paths = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Dynamically generate index.html with multiple entries
 const CleanWebpackPlugin = require('clean-webpack-plugin'); // Clean dist folder
 
 module.exports = {
   entry: {
     app: [
-      './src/index.jsx', // App entry
+      paths.appIndexJs, // App entry
     ],
   },
 
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: paths.appDist,
   },
 
   devtool: 'source-map',
@@ -20,7 +21,7 @@ module.exports = {
 
       { // Javascript
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        include: paths.appSrc,
         loader: 'babel-loader',
       },
 
@@ -73,7 +74,7 @@ module.exports = {
     new CleanWebpackPlugin( // Clean dist folder
       ['dist'],
       {
-        root: path.resolve(__dirname , '../'),
+        root: paths.appPath,
         verbose: true,
       }
     ),

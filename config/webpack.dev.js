@@ -1,3 +1,4 @@
+const paths = require('./paths');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const webpack = require('webpack');
@@ -58,7 +59,7 @@ module.exports = merge.smartStrategy(
   ],
 
   devServer: {
-    contentBase: '../dist',
+    contentBase: paths.appDist,
     hot: true, // Enable HMR on the server
   },
 });
