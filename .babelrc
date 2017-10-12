@@ -5,8 +5,8 @@
         "modules": false, // Convert to ES2015 modules
       },
     ],
-    "stage-0",
     "react",
+    "stage-0",
   ],
   "env": {
     "development": {

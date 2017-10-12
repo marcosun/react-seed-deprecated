@@ -1,14 +1,19 @@
-import React from 'React';
-import SubPage from './SubPage';
-import SubPage2 from './SubPage2';
-import Styles from './style.css';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
+
+import Dashboard from './Dashboard';
+import OdAnalytics from './OdAnalytics';
 
 export default function() {
   return (
-    <div>
-      <div className={Styles.mainPage}>Comfortable With React Seed</div>
-      <SubPage />
-      <SubPage2 />
-    </div>
+    <Router>
+      <div>
+        <Route exact path="/dashboard" component={Dashboard}/>
+        <Route exact path="/odAnalytics" component={OdAnalytics}/>
+      </div>
+    </Router>
   );
 };

@@ -4,9 +4,10 @@
   "description": "a scaffold for building React apps with ES7 and webpack",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./config/webpack.dev.js",
+    "start": "webpack-dev-server --config ./config/webpack.dev.js --history-api-fallback",
     "build": "webpack --config ./config/webpack.prod.js",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2"
   },
   "devDependencies": {
