@@ -60,6 +60,7 @@ module.exports = merge.smartStrategy(
 
   devServer: {
     contentBase: paths.appDist,
+    historyApiFallback: true, // Enable HTML History api
     hot: true, // Enable HMR on the server
   },
 });

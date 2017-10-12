@@ -4,7 +4,7 @@
   "description": "a scaffold for building React apps with ES7 and webpack",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./config/webpack.dev.js --history-api-fallback",
+    "start": "webpack-dev-server --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js",
     "test": "jest",
     "test:watch": "npm test -- --watch"
