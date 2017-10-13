@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 import { ADD_COUNT } from './actions';
 
 const count = (state = 0, action) => {
@@ -11,8 +9,8 @@ const count = (state = 0, action) => {
   }
 };
 
-const Reducers = combineReducers({
+const Reducers = {
   count,
-});
+};
 
 export default Reducers;

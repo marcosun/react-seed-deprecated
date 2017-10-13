@@ -1,15 +1,18 @@
 import React from 'react';
+import { applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Route,
-} from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+import { Route } from 'react-router-dom';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 
-// import configureStore from './store';
+// Create a history of your choosing (we're using a browser history in this case)
+const history = createHistory();
 
-// const store = configureStore();
+// Build the middleware for intercepting and dispatching navigation actions
+const middleware = routerMiddleware(history);
 
-import store from './store';
+import configureStore from './store';
+const store = configureStore(applyMiddleware(middleware)); // Apply our middleware for navigating
 
 import Dashboard from './Dashboard';
 import OdAnalytics from './OdAnalytics';
@@ -17,12 +20,12 @@ import OdAnalytics from './OdAnalytics';
 export default function() {
   return (
     <Provider store={store}>
-      <Router>
+      <ConnectedRouter history={history}>
         <div>
           <Route exact path="/dashboard" component={Dashboard}/>
           <Route exact path="/odAnalytics" component={OdAnalytics}/>
         </div>
-      </Router>
+      </ConnectedRouter>
     </Provider>
   );
 };
