@@ -35,6 +35,7 @@ module.exports = merge.smart(common, {
     new webpack.DefinePlugin( // Enable minification
       {
         'process.env': {
+          'BABEL_ENV': JSON.stringify('production'),
           'NODE_ENV': JSON.stringify('production'),
         },
       }
