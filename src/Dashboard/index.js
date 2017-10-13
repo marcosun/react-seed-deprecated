@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { addCount } from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -26,6 +28,11 @@ export const DashboardComponent = ({ count, onClick }) => (
     <Link to='/odAnalytics'>OdAnalytics</Link>
   </div>
 );
+
+DashboardComponent.propTypes = {
+  count: PropTypes.number,
+  onClick: PropTypes.func,
+};
 
 const Dashboard = connect(
   mapStateToProps,
