@@ -29,9 +29,9 @@ export const DashboardComponent = ({ count, onClick }) => (
   </div>
 );
 
-DashboardComponent.propTypes = {
-  count: PropTypes.number,
-  onClick: PropTypes.func,
+DashboardComponent.propTypes = { // Validate props type
+  count: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 const Dashboard = connect(
