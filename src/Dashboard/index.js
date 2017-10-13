@@ -1,9 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-
+import { number, func } from 'prop-types';
+// Separate local imports from dependencies
 import { addCount } from '../actions';
+
+// Declared as high as possible, since they serve as documentation
+// We’re able to do this because of JavaScript function hoisting
+DashboardComponent.propTypes = { // Validate props type
+  count: number.isRequired,
+  onClick: func.isRequired,
+};
+
+export function DashboardComponent({ count = 0, onClick }) {
+  return (
+    <div>
+      <h1>Dashboard Page</h1>
+      <div onClick={onClick}>
+        {count}
+      </div>
+      <Link to='/odAnalytics'>Go to OdAnalytics</Link>
+    </div>
+  );
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,21 +37,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
   }
 }
-
-export const DashboardComponent = ({ count, onClick }) => (
-  <div>
-    <h1>Dashboard Page</h1>
-    <div onClick={onClick}>
-      {count}
-    </div>
-    <Link to='/odAnalytics'>OdAnalytics</Link>
-  </div>
-);
-
-DashboardComponent.propTypes = { // Validate props type
-  count: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
 
 const Dashboard = connect(
   mapStateToProps,
