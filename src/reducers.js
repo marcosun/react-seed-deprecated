@@ -1,7 +1,7 @@
-import { ADD_COUNT } from './actions';
+import {ADD_COUNT} from './actions';
 
 const count = (state = 0, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case ADD_COUNT:
       return state + 1;
     default:

@@ -1,6 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
+/**
+ * OdAnalytics Page
+ * @return {Component} OdAnalytics Component
+ */
 export default function OdAnalytics() {
   return (
     <div>
@@ -8,4 +12,4 @@ export default function OdAnalytics() {
       <Link to='/dashboard'>Go to Dashboard</Link>
     </div>
   );
-};
+}
