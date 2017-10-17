@@ -2,12 +2,8 @@
   "plugins": [
     "react"
   ],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": ["eslint:recommended", "google", "plugin:react/recommended"],
   "parser": "babel-eslint",
-  "rules": {
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
-  },
   "env": {
     "browser": true,
     "node": true

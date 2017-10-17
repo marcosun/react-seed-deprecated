@@ -55,7 +55,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
     "file-loader": "# 1.x.x version of file-loader is not compatible with a bunch of loaders, i.e. css-loader, html-loader, ..., https://github.com/webpack-contrib/file-loader/issues/181#issuecomment-318230691, https://github.com/webpack-contrib/html-loader/issues/140#issuecomment-320546696",
-    "eslint": "^4.8.0",
+    "eslint": "^4.9.0",
     "eslint-config-google": "^0.9.1",
     "eslint-plugin-react": "^7.4.0",
     "file-loader": "^0.11.2",
