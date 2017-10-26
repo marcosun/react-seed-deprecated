@@ -1,27 +1,49 @@
+/**
+ * This module integrates redux with react-router and
+ * enables HTML5 browser history
+ * @module App
+ * @requires react
+ * @requires redux
+ * @requires react-redux
+ * @requires history
+ * @requires react-router-dom
+ * @requires react-router-redux
+ * @requires {@link module:Store}
+ * @requires {@link module:Dashboard}
+ * @requires {@link module:OdAnalytics}
+ */
+
 import React from 'react';
 import {applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
+import {createBrowserHistory as createHistory} from 'history';
 import {Route} from 'react-router-dom';
 import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
 
-// Create a history of your choosing
-// We're using a browser history in this case
-const history = createHistory();
-
-// Build the middleware for intercepting and dispatching navigation actions
-const middleware = routerMiddleware(history);
-
 import configureStore from './store';
-// Apply our middleware for navigation
-const store = configureStore(applyMiddleware(middleware));
-
 import Dashboard from './Dashboard';
 import OdAnalytics from './OdAnalytics';
 
 /**
- * react-router-redux connected React App
- * @return {Component}
+ * Contains HTML5 browser history instance
+ */
+const history = createHistory();
+
+/**
+ * Represents history middleware to be injected into redux
+ */
+const middleware = routerMiddleware(history);
+
+/**
+ * Represents the integration of redux store and react router
+ */
+const store = configureStore(applyMiddleware(middleware));
+
+/**
+ * Create an react app that allows redux to manage router
+ * @return {Component} react-router-redux connected React App.
+ * The returned value can be directly injected to dom.
+ * Otherwise it can also be supplied to {@link module:Index} to enable HMR
  */
 export default function App() {
   return (

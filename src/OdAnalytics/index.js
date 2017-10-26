@@ -1,11 +1,17 @@
+/**
+ * Od Analytics page
+ * @module OdAnalytics
+ * @requires react
+ * @requires react-router-dom
+ */
 import React from 'react';
 import {Link} from 'react-router-dom';
 
 /**
- * OdAnalytics Page
- * @return {Component} OdAnalytics Component
+ * Od Analytics component
+ * @return {Component} Od Analytics component
  */
-export default function OdAnalytics() {
+export function OdAnalytics() {
   return (
     <div>
       <h1>OD Analytics Page</h1>
@@ -13,3 +19,10 @@ export default function OdAnalytics() {
     </div>
   );
 }
+
+/**
+ * Od Analytics container
+ * @return {Component} Od Analytics container
+ * @function
+ */
+export default OdAnalytics;

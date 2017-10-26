@@ -1,3 +1,12 @@
+/**
+ * This module composes redux store instance.
+ * Redux store manages many complex states for the app
+ * @module Store
+ * @requires redux
+ * @requires react-router-redux
+ * @requires {@link module:Reducers}
+ */
+
 import {createStore, combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 
