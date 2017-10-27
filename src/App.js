@@ -21,6 +21,7 @@ import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
 
 import configureStore from './store';
 import {Container as Dashboard} from './Dashboard';
+import {Container as Login} from './Login';
 
 /**
  * Contains HTML5 browser history instance
@@ -48,7 +49,8 @@ export default function App() {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <div>
-          <Route exact path="/dashboard" component={Dashboard}/>
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/login" component={Login} />
         </div>
       </ConnectedRouter>
     </Provider>
