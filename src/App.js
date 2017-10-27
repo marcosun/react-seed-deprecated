@@ -10,7 +10,6 @@
  * @requires react-router-redux
  * @requires {@link module:Store}
  * @requires {@link module:Dashboard}
- * @requires {@link module:OdAnalytics}
  */
 
 import React from 'react';
@@ -21,8 +20,7 @@ import {Route} from 'react-router-dom';
 import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
 
 import configureStore from './store';
-import Dashboard from './Dashboard';
-import OdAnalytics from './OdAnalytics';
+import {Container as Dashboard} from './Dashboard';
 
 /**
  * Contains HTML5 browser history instance
@@ -51,7 +49,6 @@ export default function App() {
       <ConnectedRouter history={history}>
         <div>
           <Route exact path="/dashboard" component={Dashboard}/>
-          <Route exact path="/odAnalytics" component={OdAnalytics}/>
         </div>
       </ConnectedRouter>
     </Provider>

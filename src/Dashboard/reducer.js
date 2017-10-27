@@ -1,10 +1,10 @@
 /**
  * This module receives redux actions and responses with action handlers
- * @module Reducers
+ * @module Dashboard/Reducer
  * @requires {@link module:Actions}
  */
 
-import {ADD_COUNT} from './actions';
+import {ADD_COUNT} from './actionTypes';
 
 /**
  * Count Event Handler
@@ -15,7 +15,7 @@ import {ADD_COUNT} from './actions';
  * Action Flags {@link module:Actions}
  * @return {Object} next state
  */
-const count = (state = 0, action) => {
+const Reducer = (state = 0, action) => {
   switch (action.type) {
     case ADD_COUNT: // If ADD_COUNT action is received, increment by 1
       return state + 1;
@@ -24,12 +24,8 @@ const count = (state = 0, action) => {
   }
 };
 
-const Reducers = {
-  count,
-};
-
 /**
  * All action handlers
  * @type {Object}
  */
-export default Reducers;
+export default Reducer;

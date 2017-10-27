@@ -1,13 +1,9 @@
 /**
- * This module exports Action Flags as well as Action creactors
- * @module Actions
+ * This module exports Action Creators
+ * @module Dashboard/Actions
+ * @requires {@link module:Dashboard/ActionTypes}
  */
-
-/**
- * Add Count flag
- * @type {string}
- */
-export const ADD_COUNT = 'INCREMENT';
+import {ADD_COUNT} from './actionTypes';
 
 /**
  * Add Count action creator

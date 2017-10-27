@@ -4,13 +4,13 @@
  * @module Store
  * @requires redux
  * @requires react-router-redux
- * @requires {@link module:Reducers}
+ * @requires {@link module:Reducer}
  */
 
 import {createStore, combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 
-import rootReducer from './reducers';
+import Reducer from './reducer';
 
 /**
  * Factory composing react store with reducers and middlewares
@@ -20,7 +20,7 @@ import rootReducer from './reducers';
 export default function configureStore(initialState) {
   const store = createStore(
     combineReducers({
-      ...rootReducer,
+      ...Reducer,
       // Add the reducer to your store on the `router` key
       router: routerReducer,
     }),
@@ -29,8 +29,8 @@ export default function configureStore(initialState) {
 
   // Enable Webpack hot module replacement for reducers
   if (module.hot) {
-    module.hot.accept('./reducers', () => {
-      store.replaceReducer(rootReducer);
+    module.hot.accept('./reducer', () => {
+      store.replaceReducer(Reducer);
     });
   }
 
