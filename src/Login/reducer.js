@@ -5,7 +5,25 @@
  */
 import {TYPING_USERNAME, TYPING_PASSWORD} from './actionTypes';
 
-const Reducer = (state={username: '', password: ''}, action) => {
+/**
+ * Initial state value of react store
+ * @type {{username: string, password: string}}
+ */
+const initialState = {
+  username: '',
+  password: '',
+};
+
+/**
+ * Reducer function manipulates login leaf node of redux store
+ * @param {Object} state - Previous leaf node of redux store
+ * @param {string} state.username='' - Represents what has typed as login username
+ * @param {string} state.password='' - Represents what has typed as login password
+ * @param {Object} action Redux action
+ * @param {string} action.type Redux action name
+ * @return {Object} New redux store leaf node
+ */
+export default function Reducer(state=initialState, action) {
   switch (action.type) {
     case TYPING_USERNAME:
       return {
@@ -20,10 +38,4 @@ const Reducer = (state={username: '', password: ''}, action) => {
     default:
       return state;
   }
-};
-
-/**
- * All action handlers
- * @type {Object}
- */
-export default Reducer;
+}

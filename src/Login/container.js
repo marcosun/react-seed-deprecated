@@ -11,12 +11,13 @@ import Component from './component';
 import {typingUsername, typingPassword} from './actions';
 
 /**
+ * Map redux state to component props
  * @function
- * @param  {Object} state
- * @param  {string} state.username - login username
- * @param  {string} state.password - login password
+ * @param  {Object} state - Root store
+ * @param  {string} state.username - Login username
+ * @param  {string} state.password - Login password
  * @param  {Object} ownProps
- * @return {Object}
+ * @return {Object} New view model passed to component as props
  */
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -42,6 +43,6 @@ const Container = connect(
 )(Component);
 
 /**
- * Login Container
+ * Return redux connected Login page
  */
 export default Container;

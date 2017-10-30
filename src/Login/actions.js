@@ -1,14 +1,15 @@
 /**
  * This module exports Action Creators
  * @module Login/Actions
- * @requires {@link Login/ActionTypes}
+ * @requires {@link module:Login/ActionTypes}
  */
 import {TYPING_USERNAME, TYPING_PASSWORD} from './actionTypes';
 
 /**
+ * Typing username action creator
  * @function
- * @param  {string} username - login username
- * @return {Object} redux action
+ * @param  {string} username - Login username
+ * @return {Object} Redux action
  */
 export const typingUsername = (username) => (
   {
@@ -16,10 +17,12 @@ export const typingUsername = (username) => (
     username,
   }
 );
+
 /**
+ * Typing password action creator
  * @function
- * @param  {string} password - login password
- * @return {Object} redux action
+ * @param  {string} password - Login password
+ * @return {Object} Redux action
  */
 export const typingPassword = (password) => (
   {
