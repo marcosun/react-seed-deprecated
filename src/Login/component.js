@@ -15,9 +15,9 @@ import {string, func} from 'prop-types';
  * @param {string} props.password - Login password
  * @param {function} props.onUsernameTyping - Username typing callback
  * @param {function} props.onPasswordTyping - Password typing callback
+ * @param {function} props.onSubmit - Submit button click callback
  */
 export default class Component extends React.Component {
-
   /**
    * Props validation
    */
@@ -26,6 +26,7 @@ export default class Component extends React.Component {
     password: string.isRequired,
     onUsernameTyping: func.isRequired,
     onPasswordTyping: func.isRequired,
+    onSubmit: func.isRequired,
   };
 
   /**
@@ -36,10 +37,11 @@ export default class Component extends React.Component {
     return (
       <div>
         <h1>登陆页面</h1>
-        <form>
+        <form onSubmit={this.props.onSubmit}>
           <label>
             用户名：
             <input type='text'
+              name='username'
               value={this.props.username}
               onChange={this.props.onUsernameTyping}
             />
@@ -47,10 +49,12 @@ export default class Component extends React.Component {
           <label>
             密码：
             <input type='password'
+              name='password'
               value={this.props.password}
               onChange={this.props.onPasswordTyping}
             />
           </label>
+          <input type='submit' value='登录'/>
         </form>
       </div>
     );

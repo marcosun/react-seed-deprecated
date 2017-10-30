@@ -34,6 +34,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onPasswordTyping: (e) => {
       dispatch(typingPassword(e.target.value));
     },
+    onSubmit: (e) => { // Process by customised callback function
+      e.preventDefault();
+    },
   };
 };
 
