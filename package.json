@@ -36,6 +36,9 @@
   },
   "dependencies": {
     "history": "^4.7.2",
+    "material-design-icons": "^3.0.1",
+    "material-ui": "^1.0.0-beta.19",
+    "material-ui-icons": "^1.0.0-beta.17",
     "normalize.css": "^7.0.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
@@ -43,7 +46,8 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.6",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "typeface-roboto": "0.0.43"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
@@ -57,10 +61,10 @@
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
-    "file-loader": "# 1.x.x version of file-loader is not compatible with a bunch of loaders, i.e. css-loader, html-loader, ..., https://github.com/webpack-contrib/file-loader/issues/181#issuecomment-318230691, https://github.com/webpack-contrib/html-loader/issues/140#issuecomment-320546696",
     "eslint": "^4.9.0",
     "eslint-config-google": "^0.9.1",
     "eslint-plugin-react": "^7.4.0",
+    "file-loader": "# 1.x.x version of file-loader is not compatible with a bunch of loaders, i.e. css-loader, html-loader, ..., https://github.com/webpack-contrib/file-loader/issues/181#issuecomment-318230691, https://github.com/webpack-contrib/html-loader/issues/140#issuecomment-320546696",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^5.6.0",
