@@ -7,6 +7,8 @@
 import React from 'react';
 import {string, func} from 'prop-types';
 
+import Styles from './style.css';
+
 /**
  * Login Component
  * @extends {Component}
@@ -35,26 +37,37 @@ export default class Component extends React.Component {
    */
   render() {
     return (
-      <div>
-        <h1>登陆页面</h1>
-        <form onSubmit={this.props.onSubmit}>
-          <label>
-            用户名：
+      <div className={Styles.loginContainer}>
+        <form className={Styles.formContainer} onSubmit={this.props.onSubmit}>
+          <h1>公交云</h1>
+          <h3 className={Styles.subTitle}>
+            <span>i</span>
+            <span>Bus</span>
+            <span>Cloud</span>
+          </h3>
+          <div className={`row ${Styles.username}`}>
+            <label>
+              用户名：
+            </label>
             <input type='text'
               name='username'
               value={this.props.username}
               onChange={this.props.onUsernameTyping}
             />
-          </label>
-          <label>
-            密码：
+          </div>
+          <div className={`row ${Styles.password}`}>
+            <label>
+              密码：
+            </label>
             <input type='password'
               name='password'
               value={this.props.password}
               onChange={this.props.onPasswordTyping}
             />
-          </label>
-          <input type='submit' value='登录'/>
+          </div>
+          <div className={`row ${Styles.submit}`}>
+            <button type='submit'>登录</button>
+          </div>
         </form>
       </div>
     );

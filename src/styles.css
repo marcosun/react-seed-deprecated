@@ -3,3 +3,8 @@
  */
 
 @require '../node_modules/normalize.css/normalize.css'; 
+
+:global
+  .row
+    display: flex
+    flex-direction: row
