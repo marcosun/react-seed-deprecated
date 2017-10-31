@@ -1,0 +1,5 @@
+/*
+ * https://github.com/facebookincubator/create-react-app/issues/2273
+ */
+
+@require '../node_modules/normalize.css/normalize.css'; 

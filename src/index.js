@@ -22,6 +22,7 @@ import {AppContainer} from 'react-hot-loader';
 // Separate local imports from dependencies
 import Root from './router';
 import configureStore from './store';
+import Styles from './styles.css';
 
 /**
  * Contains HTML5 browser history instance
