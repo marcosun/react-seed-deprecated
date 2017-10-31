@@ -1,8 +1,10 @@
-const path = require('path');
 const paths = require('./paths');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // Dynamically generate index.html with multiple entries
-const CleanWebpackPlugin = require('clean-webpack-plugin'); // Clean dist folder
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin'); // Prevents users from importing files from outside of src/
+// Dynamically generate index.html with multiple entries
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// Clean dist folder
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+// Prevents users from importing files from outside of src/
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 
 module.exports = {
   entry: {
@@ -26,7 +28,7 @@ module.exports = {
         loader: 'babel-loader',
       },
 
-      { //Styling
+      { // Styling
         test: /\.css$/,
         use: [
           {
@@ -40,10 +42,21 @@ module.exports = {
               localIdentName: '[path][name]__[local]--[hash:base64:6]',
             },
           },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: paths.appConfig,
+              },
+            },
+          },
+          {
+            loader: 'stylus-loader',
+          },
         ],
       },
 
-      { //Images
+      { // Images
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
@@ -56,7 +69,7 @@ module.exports = {
         ],
       },
 
-      { //Fonts
+      { // Fonts
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           {
@@ -72,9 +85,11 @@ module.exports = {
   },
 
   plugins: [
-    new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]), // Prevents users from importing files from outside of src/
+    // Prevents users from importing files from outside of src/
+    new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
 
-    new CleanWebpackPlugin( // Clean dist folder
+    // Clean dist folder
+    new CleanWebpackPlugin(
       ['dist'],
       {
         root: paths.appPath,
@@ -82,7 +97,8 @@ module.exports = {
       }
     ),
 
-    new HtmlWebpackPlugin({ // Dynamically generate index.html with multiple entries
+    // Dynamically generate index.html with multiple entries
+    new HtmlWebpackPlugin({
       // Required
       inject: false,
       template: require('html-webpack-template'),

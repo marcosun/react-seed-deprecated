@@ -23,7 +23,7 @@ module.exports = merge.smartStrategy(
   module: {
     rules: [
 
-      { //Styling
+      { // Styling
         test: /\.css$/,
         use: [
           {
@@ -38,6 +38,16 @@ module.exports = merge.smartStrategy(
             loader: 'css-loader',
             options: {
               sourceMap: true,
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: paths.appConfig,
+              },
+              sourceMap: true,
             },
           },
         ],
@@ -48,11 +58,14 @@ module.exports = merge.smartStrategy(
   plugins: [
     new webpack.HotModuleReplacementPlugin(), // Enable HMR globally
 
-    new webpack.NamedModulesPlugin(), // Prints more readable module names in the browser console on HMR updates
+    // Prints more readable module names in the browser console on HMR updates
+    new webpack.NamedModulesPlugin(),
 
-    new webpack.NoEmitOnErrorsPlugin(), // Do not emit compiled assets that include errors
+    // Do not emit compiled assets that include errors
+    new webpack.NoEmitOnErrorsPlugin(),
 
-    new webpack.optimize.CommonsChunkPlugin({ // Bundle runtime into a seperate file
+    // Bundle runtime into a seperate file
+    new webpack.optimize.CommonsChunkPlugin({
       name: 'runtime',
       minChunks: Infinity,
     }),
