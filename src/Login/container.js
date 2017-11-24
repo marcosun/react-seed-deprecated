@@ -8,7 +8,11 @@
 import {connect} from 'react-redux';
 
 import Component from './component';
-import {typingUsername, typingPassword} from './actions';
+import {
+  typingUsername,
+  typingPassword,
+  loginAuthenticate,
+} from './actions';
 
 /**
  * Map redux state to component props
@@ -23,6 +27,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     username: state.login.username,
     password: state.login.password,
+    isAuthenticating: state.login.isAuthenticating,
   };
 };
 
@@ -36,6 +41,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onSubmit: (e) => { // Process by customised callback function
       e.preventDefault();
+      dispatch(loginAuthenticate());
     },
   };
 };

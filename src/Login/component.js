@@ -139,7 +139,7 @@ class Component extends React.Component {
             />
           </div>
           <div className={submitClassname}>
-            <Button raised color='accent' >登录</Button>
+            <Button raised color='accent' type='submit'>登录</Button>
           </div>
         </form>
       </div>

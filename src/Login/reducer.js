@@ -3,15 +3,20 @@
  * @module Login/Reducer
  * @requires {@link Login/ActionTypes}
  */
-import {TYPING_USERNAME, TYPING_PASSWORD} from './actionTypes';
+import {
+  TYPING_USERNAME,
+  TYPING_PASSWORD,
+  LOGIN_AUTHENTICATE,
+} from './actionTypes';
 
 /**
  * Initial state value of react store
- * @type {{username: string, password: string}}
+ * @type {{username: string, password: string, isAuthenticating: boolean}}
  */
 const initialState = {
   username: '',
   password: '',
+  isAuthenticating: false,
 };
 
 /**
@@ -19,6 +24,7 @@ const initialState = {
  * @param {Object} state - Previous leaf node of redux store
  * @param {string} state.username='' - Represents what has typed as login username
  * @param {string} state.password='' - Represents what has typed as login password
+ * @param {boolean} state.isAuthenticating=false - Represents status if is authenticating or not
  * @param {Object} action Redux action
  * @param {string} action.type Redux action name
  * @return {Object} New redux store leaf node
@@ -34,6 +40,11 @@ export default function Reducer(state=initialState, action) {
       return {
         ...state,
         password: action.password,
+      };
+    case LOGIN_AUTHENTICATE:
+      return {
+        ...state,
+        isAuthenticating: true,
       };
     default:
       return state;
