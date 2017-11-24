@@ -8,6 +8,9 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 
 module.exports = {
   entry: {
+    vendor: [ // Bundle dependencies into a single file
+      'babel-polyfill',
+    ],
     app: [
       paths.appIndexJs, // App entry
     ],
@@ -106,6 +109,8 @@ module.exports = {
       // Optional
       title: 'React Seed', // HTML title
       appMountId: 'app', // React will initialise on HTML tag with this id
+      chunks: ['runtime', 'vendor', 'app'], // Specify javascript load order
+      chunksSortMode: 'manual',
     }),
   ],
 };

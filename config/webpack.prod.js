@@ -7,7 +7,6 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = merge.smart(common, {
   entry: {
     vendor: [ // Bundle dependencies into a single file
-      // 'babel-polyfill',
       'react',
       'react-dom',
     ],
