@@ -5,7 +5,7 @@
  * @requires prop-types
  */
 import React from 'react';
-import {string, func, object} from 'prop-types';
+import {string, func, object, bool} from 'prop-types';
 
 import Button from 'material-ui/Button';
 import {withStyles} from 'material-ui/styles';
@@ -68,6 +68,7 @@ const styles = (theme) => ({
  * @param {Object} props
  * @param {string} props.username - Login username
  * @param {string} props.password - Login password
+ * @param {boolean} props.isAuthenticating - Login status
  * @param {function} props.onUsernameTyping - Username typing callback
  * @param {function} props.onPasswordTyping - Password typing callback
  * @param {function} props.onSubmit - Submit button click callback
@@ -83,6 +84,7 @@ class Component extends React.Component {
   static propTypes = {
     username: string.isRequired,
     password: string.isRequired,
+    isAuthenticating: bool.isRequired,
     onUsernameTyping: func.isRequired,
     onPasswordTyping: func.isRequired,
     onSubmit: func.isRequired,
@@ -98,6 +100,7 @@ class Component extends React.Component {
       classes,
       username,
       password,
+      isAuthenticating,
       onUsernameTyping,
       onPasswordTyping,
       onSubmit,
@@ -108,6 +111,7 @@ class Component extends React.Component {
       ${classes.splitWrapper}
     `;
     const submitClassname = `row ${classes.rowWrapper}`;
+    const alert = isAuthenticating ? <div>isAuthenticating</div> : null;
 
     return (
       <div className={classes.root}>
@@ -141,6 +145,7 @@ class Component extends React.Component {
           <div className={submitClassname}>
             <Button raised color='accent' type='submit'>登录</Button>
           </div>
+          {alert}
         </form>
       </div>
     );
