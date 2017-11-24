@@ -1,7 +1,8 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin'); // Uglify && Tree Shaking for production
+// Uglify && Tree Shaking for production
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge.smart(common, {
   entry: {
@@ -19,17 +20,22 @@ module.exports = merge.smart(common, {
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
 
-    new webpack.optimize.CommonsChunkPlugin({ // Bundle vendor into a seperate file
-      name: ['common', 'vendor'], // Extract common dependencies between multiple entries to common.js
+    // Bundle vendor into a seperate file
+    new webpack.optimize.CommonsChunkPlugin({
+      // Extract common dependencies between multiple entries to common.js
+      name: ['common', 'vendor'],
     }),
 
-    new webpack.optimize.CommonsChunkPlugin({ // Bundle runtime into a seperate file
+    // Bundle runtime into a seperate file
+    new webpack.optimize.CommonsChunkPlugin({
       name: 'runtime',
       minChunks: Infinity,
     }),
 
-    new UglifyJSPlugin({ // Uglify && Tree Shaking for production environment
-      sourceMap: true, //Very Important! Restrict source map file to administrator ONLY!
+    // Uglify && Tree Shaking for production environment
+    new UglifyJSPlugin({
+      // Very Important! Restrict source map file to administrator ONLY!
+      sourceMap: true,
     }),
 
     new webpack.DefinePlugin( // Enable minification
