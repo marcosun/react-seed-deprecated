@@ -7,6 +7,7 @@ import {
   TYPING_USERNAME,
   TYPING_PASSWORD,
   LOGIN_REQUEST,
+  LOGIN_SUCCESS,
 } from './actionTypes';
 
 /**
@@ -47,5 +48,16 @@ export const loginRequest = (username, password) => (
     type: LOGIN_REQUEST,
     username,
     password,
+  }
+);
+
+/**
+ * Login success action creator
+ * @function
+ * @return {Object} Redux action
+ */
+export const loginSuccess = () => (
+  {
+    type: LOGIN_SUCCESS,
   }
 );

@@ -9,6 +9,7 @@
 import {combineReducers} from 'redux';
 import {routerReducer as router} from 'react-router-redux';
 
+import Auth from './Auth';
 import dashboard from './Dashboard';
 import login from './Login';
 
@@ -18,6 +19,7 @@ import login from './Login';
  */
 export default combineReducers({
   router,
+  Auth,
   login,
   dashboard,
 });

@@ -18,6 +18,7 @@ import {applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
 import {createBrowserHistory as createHistory} from 'history';
+import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import {AppContainer} from 'react-hot-loader';
 
@@ -25,6 +26,7 @@ import {AppContainer} from 'react-hot-loader';
 import Root from './router';
 import configureStore from './store';
 import Styles from './styles.css';
+import rootSaga from './saga';
 
 /**
  * Contains HTML5 browser history instance
@@ -34,14 +36,25 @@ const history = createHistory();
 /**
  * Represents history middleware to be injected into redux
  */
-const middleware = routerMiddleware(history);
+const historyMiddleware = routerMiddleware(history);
+
+/**
+ * Represents saga middleware
+ */
+const sagaMiddleware = createSagaMiddleware();
 
 /**
  * Represents the integration of redux store and react router
  * Logger must be the last middleware in chain,
  * otherwise it will log thunk and promise, not actual actions
  */
-const store = configureStore(applyMiddleware(middleware, logger));
+const store = configureStore(applyMiddleware(
+  historyMiddleware,
+  sagaMiddleware,
+  logger
+));
+
+sagaMiddleware.run(rootSaga);
 
 /**
  * Wrap react app into hot loader container to enable HMR.

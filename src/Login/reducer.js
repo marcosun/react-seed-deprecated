@@ -7,6 +7,7 @@ import {
   TYPING_USERNAME,
   TYPING_PASSWORD,
   LOGIN_REQUEST,
+  LOGIN_SUCCESS,
 } from './actionTypes';
 
 /**
@@ -45,6 +46,11 @@ export default function Reducer(state=initialState, action) {
       return {
         ...state,
         isAuthenticating: true,
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isAuthenticating: false,
       };
     default:
       return state;
