@@ -7,6 +7,7 @@
  * @requires react-redux
  * @requires react-router-redux
  * @requires history
+ * @requires redux-logger
  * @requires react-hot-loader
  * @requires {@link module:App/Router}
  * @requires {@link module:App/Store}
@@ -17,6 +18,7 @@ import {applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
 import {createBrowserHistory as createHistory} from 'history';
+import logger from 'redux-logger';
 import {AppContainer} from 'react-hot-loader';
 
 // Separate local imports from dependencies
@@ -36,8 +38,10 @@ const middleware = routerMiddleware(history);
 
 /**
  * Represents the integration of redux store and react router
+ * Logger must be the last middleware in chain,
+ * otherwise it will log thunk and promise, not actual actions
  */
-const store = configureStore(applyMiddleware(middleware));
+const store = configureStore(applyMiddleware(middleware, logger));
 
 /**
  * Wrap react app into hot loader container to enable HMR.
