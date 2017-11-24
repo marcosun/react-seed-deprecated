@@ -9,14 +9,15 @@
 import {combineReducers} from 'redux';
 import {routerReducer as router} from 'react-router-redux';
 
-import count from './Dashboard';
+import dashboard from './Dashboard';
 import login from './Login';
 
 /**
  * Return root reducer
+ * Name of each leaf store should match Page Name or Functionality Name
  */
 export default combineReducers({
-  count,
-  login,
   router,
+  login,
+  dashboard,
 });
