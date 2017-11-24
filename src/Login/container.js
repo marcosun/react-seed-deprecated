@@ -11,7 +11,7 @@ import Component from './component';
 import {
   typingUsername,
   typingPassword,
-  loginAuthenticate,
+  loginRequest,
 } from './actions';
 
 /**
@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onSubmit: (e) => { // Process by customised callback function
       e.preventDefault();
-      dispatch(loginAuthenticate());
+      dispatch(loginRequest());
     },
   };
 };

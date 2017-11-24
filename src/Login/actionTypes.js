@@ -17,4 +17,4 @@ export const TYPING_PASSWORD = 'LOGIN/TYPING_PASSWORD';
 /**
  * @type {String}
  */
-export const LOGIN_AUTHENTICATE = 'LOGIN/LOGIN_AUTHENTICATE';
+export const LOGIN_REQUEST = 'LOGIN/LOGIN_REQUEST';

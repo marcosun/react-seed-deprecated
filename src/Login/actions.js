@@ -6,7 +6,7 @@
 import {
   TYPING_USERNAME,
   TYPING_PASSWORD,
-  LOGIN_AUTHENTICATE,
+  LOGIN_REQUEST,
 } from './actionTypes';
 
 /**
@@ -36,15 +36,15 @@ export const typingPassword = (password) => (
 );
 
 /**
- * Login authenticate action creator
+ * Login request action creator
  * @function
  * @param  {string} username - Login username
  * @param  {string} password - Login password
  * @return {Object} Redux action
  */
-export const loginAuthenticate = (username, password) => (
+export const loginRequest = (username, password) => (
   {
-    type: LOGIN_AUTHENTICATE,
+    type: LOGIN_REQUEST,
     username,
     password,
   }
