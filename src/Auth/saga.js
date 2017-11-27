@@ -8,7 +8,7 @@
  * @requires {@link module:Login/Actions}
  */
 import {delay} from 'redux-saga';
-import {put, takeEvery, select} from 'redux-saga/effects';
+import {put, takeEvery} from 'redux-saga/effects';
 
 import {
   loginSuccess,
@@ -36,13 +36,10 @@ export function* loginRequest(username, password) {
 }
 
 /**
- * Find username & password from state
  * Call auth login request
  * Fire login page login success event
  */
-export function* loginPageLoginRequest() {
-  const {username, password} = yield select((state) => (state.login));
-
+export function* loginPageLoginRequest({type, username, password}) {
   yield loginRequest(username, password);
   yield put(loginPageloginSuccess());
 }
