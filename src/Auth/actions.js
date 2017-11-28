@@ -4,20 +4,34 @@
  * @requires {@link module:Auth/ActionTypes}
  */
 import {
-  LOGIN_SUCCESS,
+  LOGIN_SUCCEEDED,
+  LOGIN_FAILED,
 } from './actionTypes';
 
 /**
- * Login request action creator
+ * Login succeeded action creator
  * @function
  * @param  {string} username - Login username
  * @param  {string} password - Login password
  * @return {Object} Redux action
  */
-export const loginSuccess = (username, password) => (
+export const loginSucceeded = (username, password) => (
   {
-    type: LOGIN_SUCCESS,
+    type: LOGIN_SUCCEEDED,
     username,
     password,
+  }
+);
+
+/**
+ * Login failed action creator
+ * @function
+ * @param  {string} errorMsg - Error message
+ * @return {Object} Redux action
+ */
+export const loginFailed = (errorMsg) => (
+  {
+    type: LOGIN_FAILED,
+    errorMsg,
   }
 );

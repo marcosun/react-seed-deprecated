@@ -11,14 +11,16 @@ import {delay} from 'redux-saga';
 import {put, takeEvery} from 'redux-saga/effects';
 
 import {
-  loginSuccess,
+  loginSucceeded,
+  loginFailed,
 } from './actions';
 
 import {
   LOGIN_REQUEST as LOGIN_PAGE_LOGIN_REQUEST,
 } from '../Login/actionTypes';
 import {
-  loginSuccess as loginPageloginSuccess,
+  loginSucceeded as loginPageLoginSucceeded,
+  loginFailed as loginPageLoginFailed,
 } from '../Login/actions';
 
 /**
@@ -28,20 +30,30 @@ import {
  * @param {String} password
  */
 export function* loginRequest(username, password) {
-  yield delay(1000);
+  yield delay(10000);
 
   // api request starts below
 
-  yield put(loginSuccess(username, password));
+  if (username === 'ibus' && password === '123456') { // SUCCESS
+    yield put(loginSucceeded(username, password));
+  } else { // FAILURE
+    yield put(loginFailed('用户名或者密码错误'));
+    throw new Error('用户名或者密码错误');
+  }
 }
 
 /**
  * Call auth login request
- * Fire login page login success event
+ * If authen succeeded, Fire login page login succeeded event
+ * If authen failed, Fire login page login failed event
  */
 export function* loginPageLoginRequest({type, username, password}) {
-  yield loginRequest(username, password);
-  yield put(loginPageloginSuccess());
+  try {
+    yield loginRequest(username, password);
+    yield put(loginPageLoginSucceeded());
+  } catch (e) {
+    yield put(loginPageLoginFailed(e.message));
+  }
 }
 
 /**

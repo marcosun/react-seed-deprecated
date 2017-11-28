@@ -136,6 +136,7 @@ class Component extends React.Component {
       reset,
       submitting,
     } = this.props;
+    
     const submitClassname = `row ${classes.rowWrapper}`;
     const alert = isAuthenticating ? <div>isAuthenticating</div> : null;
     return (

@@ -5,7 +5,8 @@
  */
 import {
   LOGIN_REQUEST,
-  LOGIN_SUCCESS,
+  LOGIN_SUCCEEDED,
+  LOGIN_FAILED,
 } from './actionTypes';
 
 /**
@@ -24,12 +25,25 @@ export const loginRequest = ({username, password}) => (
 );
 
 /**
- * Login success action creator
+ * Login succeeded action creator
  * @function
  * @return {Object} Redux action
  */
-export const loginSuccess = () => (
+export const loginSucceeded = () => (
   {
-    type: LOGIN_SUCCESS,
+    type: LOGIN_SUCCEEDED,
+  }
+);
+
+/**
+ * Login failed action creator
+ * @function
+ * @param  {string} errorMsg - Error message
+ * @return {Object} Redux action
+ */
+export const loginFailed = (errorMsg) => (
+  {
+    type: LOGIN_FAILED,
+    errorMsg,
   }
 );

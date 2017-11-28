@@ -11,4 +11,9 @@ export const LOGIN_REQUEST = 'LOGIN/LOGIN_REQUEST';
 /**
  * @type {String}
  */
-export const LOGIN_SUCCESS = 'LOGIN/LOGIN_SUCCESS';
+export const LOGIN_SUCCEEDED = 'LOGIN/LOGIN_SUCCEEDED';
+
+/**
+ * @type {String}
+ */
+export const LOGIN_FAILED = 'LOGIN/LOGIN_FAILED';
