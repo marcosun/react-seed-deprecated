@@ -54,7 +54,7 @@ const store = configureStore(applyMiddleware(
   logger
 ));
 
-sagaMiddleware.run(rootSaga);
+let sagaTask = sagaMiddleware.run(rootSaga);
 
 /**
  * Wrap react app into hot loader container to enable HMR.
@@ -89,5 +89,13 @@ if (module.hot) {
    */
   module.hot.accept('./router', () => {
     render(Root);
+  });
+
+  // Enable Webpack hot module replacement for saga
+  module.hot.accept('./saga', () => {
+    sagaTask.cancel();
+    sagaTask.done.then(() => {
+      sagaTask = sagaMiddleware.run(rootSaga);
+    });
   });
 }
