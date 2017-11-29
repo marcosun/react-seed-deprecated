@@ -1,6 +1,13 @@
+/**
+ * Saga entrance file
+ * @requires redux-saga
+ * @requires redux-form-saga
+ * @requires {@link module:Auth/Saga}
+ */
 import {all} from 'redux-saga/effects';
 
-import {Saga as auth} from './Auth';
+import formActionSaga from 'redux-form-saga';
+import {Saga as login} from './Login';
 
 /**
  * [*rootSaga description]
@@ -8,6 +15,7 @@ import {Saga as auth} from './Auth';
  */
 export default function* rootSaga() {
   yield all([
-    auth(),
+    formActionSaga(),
+    login(),
   ]);
 }

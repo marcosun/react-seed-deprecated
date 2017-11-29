@@ -4,6 +4,7 @@
 import Component from './component';
 import Container from './container';
 import Reducer from './reducer';
+import Saga from './saga';
 
 export {
   /**
@@ -16,6 +17,7 @@ export {
    * {@link module:Login/Container}
    */
   Container,
+  Saga,
 };
 
 /**
