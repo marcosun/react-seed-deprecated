@@ -2,9 +2,11 @@
  * Login Container Module
  * @module Login/Container
  * @requires react-redux
+ * @requires react-router-redux
  * @requires {@link module:Login/Component}
  */
 import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
 
 import Component from './component';
 
@@ -23,6 +25,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    loginSuccessRedirect: () => {
+      dispatch(push('/index'));
+    },
   };
 };
 

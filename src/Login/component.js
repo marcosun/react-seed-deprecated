@@ -8,7 +8,7 @@
  * @requires {@link module:Login/Actions}
  */
 import React from 'react';
-import {object, bool} from 'prop-types';
+import {object, bool, func} from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 
 import LoginForm from './loginFormComponent';
@@ -53,14 +53,23 @@ class Component extends React.Component {
   static propTypes = {
     classes: object.isRequired,
     isLoggedIn: bool.isRequired,
-    history: object.isRequired,
+    loginSuccessRedirect: func.isRequired,
   };
 
+  /**
+   * Constructor function
+   * Authentication check, redirect if has already logged in
+   * @param  {Object} props
+   */
   constructor(props) {
     super();
     this.auth(props);
   }
 
+  /**
+   * Authentication check, redirect if has already logged in
+   * @param  {Object} nextProps
+   */
   componentWillReceiveProps(nextProps) {
     this.auth(nextProps);
   }
@@ -69,10 +78,11 @@ class Component extends React.Component {
    * Authentication service will redirect home page if logged in
    * @param  {Object} props
    * @param  {boolean} props.isLoggedIn - Auth status
-   * @param  {Object} props.history - Auth status
+   * @param  {function} props.loginSuccessRedirect - Redirect function
+   * to be called after logged in
    */
   auth(props) {
-    props.isLoggedIn && props.history.push('/index');
+    props.isLoggedIn && props.loginSuccessRedirect();
   }
 
   /**
