@@ -16,18 +16,46 @@ import {
 /**
  * Auth login request
  * Update username and password when login successfully
- * @param {String} username
- * @param {String} password
+ * @param {Object} payload
+ * @param {String} payload.username
+ * @param {String} payload.password
  */
-export function* loginRequest(username, password) {
-  yield delay(10000);
+export function* loginRequest({username, password}) {
+  yield delay(1000);
 
   // api request starts below
+  if (username !== 'ibus') {
+    const failureResponse = {
+      name: 'VALIDATION_ERROR',
+      details: [{
+        field: 'username',
+        value: username,
+        issue: '用户名错误',
+        location: 'body',
+      }],
+      message: '账号或密码错误，请重新登录',
+    };
 
-  if (username === 'ibus' && password === '123456') { // SUCCESS
-    yield put(loginSucceeded(username, password));
-  } else { // FAILURE
-    yield put(loginFailed('用户名或者密码错误'));
-    throw new Error('用户名或者密码错误');
+    yield put(loginFailed(failureResponse));
+
+    // Reject promise so it can be catched by parent saga
+    yield Promise.reject(failureResponse);
+  } else if (password !== '123456') {
+    const failureResponse = {
+      name: 'VALIDATION_ERROR',
+      details: [{
+        field: 'password',
+        issue: '密码错误',
+        location: 'body',
+      }],
+      message: '账号或密码错误，请重新登录',
+    };
+
+    yield put(loginFailed(failureResponse));
+
+    // Reject promise so it can be catched by parent saga
+    yield Promise.reject(failureResponse);
+  } else {
+    yield put(loginSucceeded({username, token: '234e8fvq2efwcsgfrw'}));
   }
 }

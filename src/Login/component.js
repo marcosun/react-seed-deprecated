@@ -4,14 +4,18 @@
  * @requires react
  * @requires prop-types
  * @requires material-ui
+ * @requires {@link module:Login/loginFormComponent}
+ * @requires {@link module:Login/Actions}
  */
 import React from 'react';
-import {func, object, bool} from 'prop-types';
+import {object} from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 
 import LoginForm from './loginFormComponent';
+import {login} from './actions';
+
 // Css module is disabled, instead I am using css-in-js
-// This approach gives css full functionality from javascript
+// This approach gives css full functionality of javascript
 // import Styles from './style.css';
 
 const styles = (theme) => ({
@@ -37,8 +41,6 @@ const styles = (theme) => ({
  * Login Component
  * @extends {Component}
  * @param {Object} props
- * @param {boolean} props.isAuthenticating - Login status
- * @param {function} props.onSubmit - Submit button click callback
  */
 @withStyles(styles)
 class Component extends React.Component {
@@ -46,26 +48,24 @@ class Component extends React.Component {
    * Props validation
    */
   static propTypes = {
-    isAuthenticating: bool.isRequired,
     classes: object.isRequired,
-    onSubmit: func.isRequired,
   };
 
   /**
    * Return react tree of Login page
+   * Pass login object created by redux-form-saga
+   * to integrate redux-form with redux-saga
    * @return {Component}
    */
   render() {
     const {
       classes,
-      isAuthenticating,
-      onSubmit,
     } = this.props;
 
     return (
       <div className={classes.root}>
         <div className={classes.form}>
-          <LoginForm onSubmit={onSubmit} isAuthenticating={isAuthenticating} />
+          <LoginForm onSubmit={login} />
         </div>
       </div>
     );

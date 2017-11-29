@@ -8,22 +8,46 @@ import {
   LOGIN_FAILED,
 } from './actionTypes';
 
-/**
- * Initial state value of react store
- * @type {{username: string, password: string, errorMsg: string}}
- */
+// Initial state value of react store
 const initialState = {
-  username: '',
-  password: '',
-  errorMsg: '',
+  user: {
+    username: '',
+    token: '',
+  },
+  error: {
+    name: '',
+    details: [
+      // {
+      //   field: '',
+      //   value: '',
+      //   issue: '',
+      //   location: '',
+      // },
+    ],
+    message: '',
+  },
 };
 
 /**
  * Reducer function manipulates auth leaf node of redux store
  * @param {Object} state - Previous leaf node of redux store
- * @param {Object} state.username - Represents username
- * @param {Object} state.password - Represents password
- * @param {Object} state.errorMsg - Represents error message
+ * @param {Object} state.user - Represents a user
+ * @param {string} state.user.username - Represents username
+ * @param {string} state.user.token - Represents access token
+ * @param {Object} state.error - Represents error
+ * @param {string} state.error.name - A human-readable,
+ * unique name for the error
+ * @param {string} state.error.details - An array that contains
+ * individual instance(s) of the error with specifics such as the following.
+ * This field is required for client side errors(4xx).
+ * @param {string} state.error.details.field - name of
+ * the path parameter or query parameter
+ * @param {string} state.error.details.value - Value of the field in error
+ * @param {string} state.error.details.issue - Reason for error
+ * @param {string} state.error.details.location - The location of
+ * the field in the error, either query, path, or body.
+ * @param {string} state.error.message - A human-readable message,
+ * describing the error
  * @param {Object} action Redux action
  * @param {string} action.type Redux action name
  * @return {Object} New redux store leaf node
@@ -33,15 +57,28 @@ export default function Reducer(state=initialState, action) {
     case LOGIN_SUCCEEDED:
       return {
         ...state,
-        username: action.username,
-        password: action.password,
+        user: {
+          username: action.payload.username,
+          token: action.payload.token,
+        },
+        error: {...initialState.error}, // Clear error
       };
     case LOGIN_FAILED:
       return {
         ...state,
-        username: '',
-        password: '',
-        errorMsg: action.errorMsg,
+        user: {...initialState.user}, // Clear user
+        error: {
+          name: action.payload.name,
+          details: action.payload.details.map((detail) => {
+            return {
+              field: detail.field,
+              value: detail.value,
+              issue: detail.issue,
+              location: detail.location,
+            };
+          }),
+          message: action.payload.message,
+        },
       };
     default:
       return state;
