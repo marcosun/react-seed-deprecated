@@ -12,15 +12,15 @@ import {
  * @type {}
  */
 const initialState = {
-  
+
 };
 
 /**
  * Reducer function manipulates login leaf node of redux store
  * @param {Object} state - Previous leaf node of redux store
- * @param {Object} action Redux action
- * @param {string} action.type Redux action name
- * @return {Object} New redux store leaf node
+ * @param {Object} action - Redux action
+ * @param {string} action.type - Redux action name
+ * @return {Object}
  */
 export default function Reducer(state=initialState, action) {
   return state;

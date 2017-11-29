@@ -13,6 +13,7 @@ const initialState = {
   user: {
     username: '',
     token: '',
+    isLoggedIn: false,
   },
   error: {
     name: '',
@@ -34,6 +35,7 @@ const initialState = {
  * @param {Object} state.user - Represents a user
  * @param {string} state.user.username - Represents username
  * @param {string} state.user.token - Represents access token
+ * @param {boolean} state.user.isLoggedIn - Log in status
  * @param {Object} state.error - Represents error
  * @param {string} state.error.name - A human-readable,
  * unique name for the error
@@ -60,6 +62,7 @@ export default function Reducer(state=initialState, action) {
         user: {
           username: action.payload.username,
           token: action.payload.token,
+          isLoggedIn: true,
         },
         error: {...initialState.error}, // Clear error
       };

@@ -1,7 +1,6 @@
 /**
- * Home container
+ * Home Container Module
  * @module Home/Container
- * @requires react
  * @requires react-redux
  * @requires {@link module:Home/Component}
  */
@@ -10,25 +9,26 @@ import {connect} from 'react-redux';
 import Component from './component';
 
 const mapStateToProps = (state, ownProps) => {
+  return {
+
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+
+  };
 };
 
 /**
  * Connected react component
  */
-@connect(
-  mapStateToProps,
-  mapDispatchToProps
-)
+@connect(mapStateToProps, mapDispatchToProps)
 class Container extends Component {
 
 }
 
 /**
- * Dashboard container
- * @return {Component} Dashboard container
- * @function
+ * Return redux connected Home page
  */
 export default Container;

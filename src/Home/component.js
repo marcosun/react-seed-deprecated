@@ -1,31 +1,38 @@
 /**
- * Home Component
+ * Home Component Module
  * @module Home/Component
  * @requires react
- * @requires react-router-dom
  * @requires prop-types
  */
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {number, func} from 'prop-types';
 
 /**
- * Declares props validation as high as possible,
- * since they serve as documentation.
- * We’re able to do this because of JavaScript function hoisting.
+ * Home Component
+ * @extends {Component}
+ * @param {Object} props
  */
-Component.propTypes = {
-};
+class Component extends React.Component {
+  /**
+   * Props validation
+   * Declares props validation as high as possible,
+   * since they serve as documentation.
+   * We’re able to do this because of JavaScript function hoisting.
+   */
+  static propTypes = {
+  };
 
-/**
- * Home component
- * @param {Object} options
- * @return {Component} Dashboard component
- */
-export default function Component() {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  );
+  /**
+   * Return react tree of Home page
+   * @return {Component}
+   */
+  render() {
+    return (
+      <div>
+        <h1>Home Page</h1>
+      </div>
+    );
+  }
 }
+
+export default Component;

@@ -17,6 +17,7 @@ import Component from './component';
  */
 const mapStateToProps = (state, ownProps) => {
   return {
+    isLoggedIn: state.auth.user.isLoggedIn,
   };
 };
 

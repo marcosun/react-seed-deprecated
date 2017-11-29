@@ -8,7 +8,7 @@
  * @requires {@link module:Login/Actions}
  */
 import React from 'react';
-import {object} from 'prop-types';
+import {object, bool} from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 
 import LoginForm from './loginFormComponent';
@@ -46,10 +46,34 @@ const styles = (theme) => ({
 class Component extends React.Component {
   /**
    * Props validation
+   * Declares props validation as high as possible,
+   * since they serve as documentation.
+   * We’re able to do this because of JavaScript function hoisting.
    */
   static propTypes = {
     classes: object.isRequired,
+    isLoggedIn: bool.isRequired,
+    history: object.isRequired,
   };
+
+  constructor(props) {
+    super();
+    this.auth(props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.auth(nextProps);
+  }
+
+  /**
+   * Authentication service will redirect home page if logged in
+   * @param  {Object} props
+   * @param  {boolean} props.isLoggedIn - Auth status
+   * @param  {Object} props.history - Auth status
+   */
+  auth(props) {
+    props.isLoggedIn && props.history.push('/index');
+  }
 
   /**
    * Return react tree of Login page

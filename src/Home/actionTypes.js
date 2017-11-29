@@ -1,5 +1,4 @@
 /**
- * This module exports Action Flags
+ * This module exports Action names
  * @module Home/ActionTypes
  */
-
