@@ -10,6 +10,7 @@ import React from 'react';
 import {func, object} from 'prop-types';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
+import {CircularProgress} from 'material-ui/Progress';
 import {withStyles} from 'material-ui/styles';
 import {Field, reduxForm, propTypes as reduxFormPropTypes} from 'redux-form';
 import {fieldPropTypes} from 'redux-form/lib/propTypes';
@@ -59,21 +60,27 @@ const styles = (theme) => ({
     color: 'white',
   },
   subTitle: {
-    '& span': {
-      '&:first-child': {
-        color: 'rgb(239,65,53)',
-      },
-      '&:nth-child(2)': {
-        color: 'white',
-      },
-      '&:last-child': {
-        color: 'rgb(0,85,164)',
-      },
+    '& span:first-child': {
+      color: 'rgb(239,65,53)',
+    },
+    '& span:nth-child(2)': {
+      color: 'white',
+    },
+    '& span:last-child': {
+      color: 'rgb(0,85,164)',
     },
   },
-  rowWrapper: {
+  submitWrapper: {
+    position: 'relative',
+    display: 'flex',
     justifyContent: 'center',
     margin: '10px',
+  },
+  circularProgress: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate3d(-50%,-50%,0)',
   },
   textField: {
     backgroundColor: 'white',
@@ -120,7 +127,6 @@ class LoginForm extends React.Component {
       error,
     } = this.props;
 
-    const submitClassname = `row ${classes.rowWrapper}`;
     return (
       <form className={classes.form} onSubmit={handleSubmit}>
         <h1>公交云</h1>
@@ -146,7 +152,7 @@ class LoginForm extends React.Component {
           margin='normal'
           placeholder='密码...'
         />
-        <div className={submitClassname}>
+        <div className={classes.submitWrapper}>
           <Button
             type='submit'
             raised
@@ -155,6 +161,11 @@ class LoginForm extends React.Component {
           >
             登录
           </Button>
+          {
+            submitting
+            && <CircularProgress className={classes.circularProgress}
+              size={30} color='accent' />
+          }
         </div>
         {error && <strong>{error}</strong>}
       </form>

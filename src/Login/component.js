@@ -20,6 +20,7 @@ import {login} from './actions';
 
 const styles = (theme) => ({
   root: {
+    position: 'relative',
     width: '100vw',
     height: '100vh',
     background: {
