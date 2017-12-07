@@ -23,12 +23,10 @@ const styles = (theme) => ({
     position: 'relative',
     width: '100vw',
     height: '100vh',
-    background: {
-      position: 'center',
-      size: '100vw 100vh',
-      repeat: 'no-repeat',
-      image: `url(${require('./traffic.gif')})`,
-    },
+    backgroundPosition: 'center',
+    backgroundSize: '100vw 100vh',
+    backgroundRepeat: 'no-repeat',
+    backgroundImage: `url(${require('./traffic.gif')})`,
   },
   form: {
     position: 'absolute',
