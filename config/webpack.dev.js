@@ -14,10 +14,6 @@ module.exports = merge.smartStrategy(
     ],
   },
 
-  output: {
-    filename: 'assets/js/[name].[hash].js',
-  },
-
   devtool: 'inline-source-map', // Not for production
 
   module: {

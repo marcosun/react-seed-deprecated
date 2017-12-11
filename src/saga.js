@@ -7,7 +7,7 @@
 import {all} from 'redux-saga/effects';
 
 import formActionSaga from 'redux-form-saga';
-import {Saga as login} from './Login';
+import login from './Login/saga';
 
 /**
  * [*rootSaga description]

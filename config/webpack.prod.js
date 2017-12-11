@@ -12,10 +12,6 @@ module.exports = merge.smart(common, {
     ],
   },
 
-  output: {
-    filename: 'assets/js/[name].[chunkhash].js',
-  },
-
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
 

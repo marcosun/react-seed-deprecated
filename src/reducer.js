@@ -10,9 +10,9 @@ import {combineReducers} from 'redux';
 import {routerReducer as router} from 'react-router-redux';
 import {reducer as formReducer} from 'redux-form';
 
-import auth from './Auth';
-import home from './Home';
-import login from './Login';
+import auth from './Auth/reducer';
+import home from './Home/reducer';
+import login from './Login/reducer';
 
 /**
  * Return root reducer
