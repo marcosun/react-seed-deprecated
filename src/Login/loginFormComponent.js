@@ -139,7 +139,7 @@ class LoginForm extends React.Component {
           component={renderTextField}
           type='text'
           name='username'
-          InputClassName={classes.textField}
+          inputClassName={classes.textField}
           margin='normal'
           placeholder='用户名...'
           autoFocus
@@ -148,7 +148,7 @@ class LoginForm extends React.Component {
           component={renderTextField}
           type='password'
           name='password'
-          InputClassName={classes.textField}
+          inputClassName={classes.textField}
           margin='normal'
           placeholder='密码...'
         />
