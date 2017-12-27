@@ -3,25 +3,30 @@
  * @module App/Reducer
  * @requires redux
  * @requires react-router-redux
- * @requires {@link module:Home}
- * @requires {@link module:Login}
  */
 import {combineReducers} from 'redux';
 import {routerReducer as router} from 'react-router-redux';
 import {reducer as formReducer} from 'redux-form';
 
 import auth from './Auth/reducer';
-import home from './Home/reducer';
-import login from './Login/reducer';
 
 /**
- * Return root reducer
- * Name of each leaf store should match Page Name or Functionality Name
+ * This is a create reducer function
+ * It returns current permanent and asynchronously loaded reducers
+ * @param  {function} asyncReducers - asynchronously loaded recuders
+ * @return {object} - root reducer
  */
-export default combineReducers({
-  router,
-  form: formReducer,
-  auth,
-  login,
-  home,
-});
+export default function createReducer(asyncReducers) {
+  /**
+   * Return root reducer
+   * Name of each leaf store should match Page Name or Functionality Name
+   */
+  return combineReducers({
+    // Permanent redux reducers
+    router,
+    form: formReducer,
+    auth,
+    // Aync reducers
+    ...asyncReducers,
+  });
+}
