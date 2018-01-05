@@ -3,23 +3,21 @@
  * @module App/Router
  * @requires react
  * @requires react-router-dom
- * @requires loadable-components
+ * @requires react-loadable
  * @requires {@link module:Home}
  * @requires {@link module:Login}
  */
 import React from 'react';
 import {Route} from 'react-router-dom';
-import loadable from 'loadable-components'; // Dynamically load component
+import loadable from 'react-loadable'; // Dynamically load component
 import {object} from 'prop-types';
 
 // Dynamically load reducer
 import injectAsyncReducer from './injectAsyncReducer';
 
-// Require Pages
+// // Require Pages
 // import {Container as Home} from './Home';
 // import {Container as Login} from './Login';
-// const Home = loadable(() => import('./Home/container'));
-// const Login = loadable(() => import('./Login/container'));
 
 // /**
 //  * @return {Router}
@@ -48,23 +46,33 @@ export default class Router extends React.Component {
    */
   constructor(props, context) {
     super(props);
-    this.Home = loadable(() => {
-      injectAsyncReducer( // Aynchronously load reducer
-        context.store,
-        'home', // Reducer name
-        require('./Home/reducer').default // Reducer function
-      );
+    this.Home = loadable({
+      loader: () => {
+        injectAsyncReducer( // Aynchronously load reducer
+          context.store,
+          'home', // Reducer name
+          require('./Home/reducer').default // Reducer function
+        );
 
-      return import('./Home/container');
+        return import('./Home/container');
+      },
+      loading: () => {
+        return <div>Loading...</div>;
+      },
     });
-    this.Login = loadable(() => {
-      injectAsyncReducer( // Aynchronously load reducer
-        context.store,
-        'login', // Reducer name
-        require('./Login/reducer').default // Reducer function
-      );
+    this.Login = loadable({
+      loader: () => {
+        injectAsyncReducer( // Aynchronously load reducer
+          context.store,
+          'login', // Reducer name
+          require('./Login/reducer').default // Reducer function
+        );
 
-      return import('./Login/container');
+        return import('./Login/container');
+      },
+      loading: () => {
+        return <div>Loading...</div>;
+      },
     });
   }
 

@@ -23,7 +23,7 @@ import logger from 'redux-logger';
 import {AppContainer} from 'react-hot-loader';
 
 // Separate local imports from dependencies
-import Root from './router';
+import App from './app';
 import configureStore from './store';
 import Styles from './styles.css';
 import rootSaga from './saga';
@@ -80,7 +80,7 @@ const render = (Component) => {
   );
 };
 
-render(Root);
+render(App);
 
 /**
  * Watching for HMR
@@ -89,8 +89,8 @@ if (module.hot) {
   /**
    * Any changes detected from React App would cause HMR
    */
-  module.hot.accept('./router', () => {
-    render(Root);
+  module.hot.accept('./app', () => {
+    render(App);
   });
 
   // Enable Webpack hot module replacement for saga
