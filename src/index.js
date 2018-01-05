@@ -9,7 +9,7 @@
  * @requires history
  * @requires redux-logger
  * @requires react-hot-loader
- * @requires {@link module:App/Router}
+ * @requires {@link module:App/App}
  * @requires {@link module:App/Store}
  */
 import React from 'react';
@@ -65,7 +65,7 @@ let sagaTask = sagaMiddleware.run(rootSaga);
  * only to discover that one should ALWAYS put store on top level of containers.
  * {@link https://github.com/reactjs/react-redux/issues/356#issuecomment-333321556}
  * @param  {Router} Component - React router
- * created by {@link module:App/Router}
+ * created by {@link module:App/App}
  */
 const render = (Component) => {
   ReactDom.render(
