@@ -15,22 +15,6 @@ import {object} from 'prop-types';
 // Dynamically load reducer
 import injectAsyncReducer from './injectAsyncReducer';
 
-// // Require Pages
-// import {Container as Home} from './Home';
-// import {Container as Login} from './Login';
-
-// /**
-//  * @return {Router}
-//  */
-// export default function Router() {
-//   return (
-//     <div>
-//       <Route exact path="/index" component={Home} />
-//       <Route exact path="/login" component={Login} />
-//     </div>
-//   );
-// }
-
 /**
  * App Router
  */

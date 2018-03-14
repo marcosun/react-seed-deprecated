@@ -21,12 +21,19 @@ import {createBrowserHistory as createHistory} from 'history';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import {AppContainer} from 'react-hot-loader';
+import CssBaseline from 'material-ui/CssBaseline';
+import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 
 // Separate local imports from dependencies
 import App from './app';
 import configureStore from './store';
-import Styles from './styles.css';
 import rootSaga from './saga';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
 
 /**
  * Contains HTML5 browser history instance
@@ -72,7 +79,11 @@ const render = (Component) => {
     <AppContainer>
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <Component />
+          <CssBaseline>
+            <MuiThemeProvider theme={theme}>
+              <Component />
+            </MuiThemeProvider>
+          </CssBaseline>
         </ConnectedRouter>
       </Provider>
     </AppContainer>,

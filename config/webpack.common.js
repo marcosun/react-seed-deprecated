@@ -33,34 +33,6 @@ module.exports = {
         loader: 'babel-loader',
       },
 
-      { // Styling
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              camelCase: true,
-              localIdentName: '[path][name]__[local]--[hash:base64:6]',
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                path: paths.appConfig,
-              },
-            },
-          },
-          {
-            loader: 'stylus-loader',
-          },
-        ],
-      },
-
       { // Images
         test: /\.(png|svg|jpg|gif)$/,
         use: [

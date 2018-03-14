@@ -155,8 +155,8 @@ class LoginForm extends React.Component {
         <div className={classes.submitWrapper}>
           <Button
             type='submit'
-            raised
-            color='accent'
+            variant='raised'
+            color='secondary'
             disabled={submitting}
           >
             登录
@@ -164,7 +164,7 @@ class LoginForm extends React.Component {
           {
             submitting
             && <CircularProgress className={classes.circularProgress}
-              size={30} color='accent' />
+              size={30} color='secondary' />
           }
         </div>
         {error && <strong>{error}</strong>}

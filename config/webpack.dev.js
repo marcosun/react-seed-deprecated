@@ -16,41 +16,6 @@ module.exports = merge.smartStrategy(
 
   devtool: 'inline-source-map', // Not for production
 
-  module: {
-    rules: [
-
-      { // Styling
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-            options: {
-              sourceMap: true,
-              convertToAbsoluteUrls: true,
-              hmr: true,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              importLoaders: 2,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                path: paths.appConfig,
-              },
-              sourceMap: true,
-            },
-          },
-        ],
-      },
-    ],
-  },
-
   plugins: [
     new webpack.HotModuleReplacementPlugin(), // Enable HMR globally
 
